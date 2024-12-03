@@ -15,7 +15,7 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState(null);
 
-  const url = import.meta.env.VITE_API_KEY + `&page=${page}&query=${query}`;
+  const url = `https://api.unsplash.com/photos/?client_id=xfksvx4N3MLY3CQ2cYl_WHGwFkdtXgwXWuA2RLP-kzg&page=${page}&query=${query}`;
 
   function openModal(image) {
     setModalImg(image);
