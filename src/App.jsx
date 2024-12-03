@@ -15,7 +15,7 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState(null);
 
-  const url = import.meta.env.VITE_API_KEY;
+  const url = import.meta.env.VITE_API_KEY + `&page=${page}&query=${query}`;
 
   function openModal(image) {
     setModalImg(image);
