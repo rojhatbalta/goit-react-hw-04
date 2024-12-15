@@ -10,7 +10,7 @@ export default function SearchBar({ query, setQuery, setPage }) {
     e.preventDefault();
     const inputVal = inputRef.current.value.trim().toLowerCase();
 
-    if (inputVal === "" || inputVal === query) {
+    if (inputVal === query) {
       Toast.error("Please type something different to search!");
     } else {
       setQuery(inputVal);
