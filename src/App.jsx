@@ -15,7 +15,22 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState(null);
 
-  const url = `https://api.unsplash.com/photos/?client_id=xfksvx4N3MLY3CQ2cYl_WHGwFkdtXgwXWuA2RLP-kzg&page=${page}&query=${query}`;
+  const getUrl = () => {
+    if (query) {
+      return `https://api.unsplash.com/search/photos/?client_id=xfksvx4N3MLY3CQ2cYl_WHGwFkdtXgwXWuA2RLP-kzg&page=${page}&query=${query}`;
+    } else {
+      return `https://api.unsplash.com/photos/?client_id=xfksvx4N3MLY3CQ2cYl_WHGwFkdtXgwXWuA2RLP-kzg&page=${page}`;
+    }
+  };
+
+  useEffect(() => {
+    const url = getUrl();
+    if (query || page === 1) {
+      getAndSetImages(url, setLoading, setImages, false);
+    } else {
+      getAndSetImages(url, setLoading, setImages, true);
+    }
+  }, [query, page]);
 
   function openModal(image) {
     setModalImg(image);
@@ -26,16 +41,6 @@ export default function App() {
     setIsModalOpen(false);
     setModalImg(null);
   }
-
-  useEffect(() => {
-    if (query) {
-      if (page > 1) {
-        getAndSetImages(url, setLoading, setImages, true);
-      } else {
-        getAndSetImages(url, setLoading, setImages);
-      }
-    }
-  }, [query, page, url]);
 
   return (
     <>

@@ -22,11 +22,14 @@ export default function SearchBar({ query, setQuery, setPage }) {
     <header className={Styles.header}>
       <form onSubmit={(e) => handleSubmit(e)} className={Styles.searchForm}>
         <input
+          className={Styles.input}
+          id="searchInput"
+          name="searchInput"
           type="text"
           autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
           ref={inputRef}
-          className={Styles.searchInput}
         />
         <button type="submit" className={Styles.searchBtn}>
           Search

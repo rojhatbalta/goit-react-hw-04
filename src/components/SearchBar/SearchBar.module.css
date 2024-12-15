@@ -1,4 +1,4 @@
-.searchInput,
+.input,
 .searchBtn {
   padding: 10px;
   border-radius: 8px;
@@ -6,14 +6,14 @@
   border: 1px solid black;
 }
 
-.searchInput {
+.input {
   width: 35%;
   background: none;
   color: #f8f9fa;
   border-color: #fbfbfb;
 }
 
-.searchInput::placeholder {
+.input::placeholder {
   color: #fff;
   opacity: 0.6;
 }

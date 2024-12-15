@@ -12,14 +12,16 @@ export default async function getAndSetImages(
     const response = await axios.get(url);
     const data = response.data;
 
-    if (data.results.length === 0) {
-      toast.error(
-        "Nothing to find with this value, please try something else!"
-      );
-    } else {
+    if (Array.isArray(data)) {
+      more
+        ? setImages((prevImages) => [...prevImages, ...data])
+        : setImages([...data]);
+    } else if (data.results) {
       more
         ? setImages((prevImages) => [...prevImages, ...data.results])
         : setImages([...data.results]);
+    } else {
+      toast.error("Unexpected response format from API!");
     }
   } catch (error) {
     toast.error(error.message);
